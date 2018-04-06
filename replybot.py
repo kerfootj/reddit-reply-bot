@@ -7,10 +7,9 @@ import praw
 import time
 import sys
 import traceback
-import progressbar
 from fuzzywuzzy import fuzz
 
-__version__ = '1.0.0'
+__version__ = '1.0.2'
 
 class bot:
 	def __init__(self, keywords, quotes, subreddits=['all'], ratio=80, limit=250, sleeptime=30, debug=False):
@@ -23,7 +22,7 @@ class bot:
 		self.sleeptime = sleeptime
 		self.debug = debug
 		self.numComments = 0
-		self.timeout = 1
+		self.timeout = 10
 		self.reddit = None
 	
 	# Start the bot 
@@ -120,7 +119,6 @@ class bot:
 			self._progress(cur / t * 100)
 		self._end_progress()
 			
-	
 	def _start_progress(self, title):
 		global progress_x
 		sys.stdout.write(title + ': [' + '-'*40 + ']' + chr(8)*41)
